@@ -17,3 +17,14 @@ Programs in this repo:
 ### Run order:
 1. citibike_csv.py
 2. csv_to_sql.py
+
+### Prerequisites 
+
+* sqlite
+
+* Python3+ packages:
+	* requests
+	* json
+	* csv
+	* sqlite3
+
