@@ -1,4 +1,5 @@
-#!/anaconda3/bin/python
+#!/usr/bin/env python
+
 import sqlite3
 import csv
 
