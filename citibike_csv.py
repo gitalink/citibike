@@ -16,7 +16,7 @@ for station in bikes["stationBeanList"]:
 	station.update({"ExecutionTime":bikes["executionTime"]})
 
 
-def csv_writer(path, fieldnames, data):
+def write_csv(path, fieldnames, data):
 	
 	# Write a csv file from citibike stations app json.
 	
@@ -30,4 +30,4 @@ path = "citibikes_status.csv"
 data = bikes["stationBeanList"]
 fieldnames = ["ExecutionTime","id", "stationName", "availableDocks", "totalDocks", "latitude", "longitude", "statusValue", "statusKey", "availableBikes", "stAddress1","stAddress2","city", "postalCode", "location", "altitude", "testStation", "lastCommunicationTime", "landMark"]
 
-csv_writer(path, fieldnames, data)
+write_csv(path, fieldnames, data)
