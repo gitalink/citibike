@@ -3,23 +3,23 @@ import requests
 import json 
 import csv
 
-"""
-Getting the data from citibikenyc and changing it into json 
-"""
+
+# Get the data from citibikenyc and changes it into json 
+
 r = requests.get("https://feeds.citibikenyc.com/stations/stations.json")
 bikes = r.json()
 
-""" 
-Adding timestamp to every station record 
-"""
+
+# Add timestamp to every station record 
+
 for station in bikes["stationBeanList"]:
 	station.update({"ExecutionTime":bikes["executionTime"]})
 
 
 def csv_writer(path, fieldnames, data):
-	""" 
-	Writes a csv file from citibike stations app json.
-	"""
+	
+	# Write a csv file from citibike stations app json.
+	
 	with open(path, "w", newline = "") as csv_file:
 		writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 		writer.writeheader()
