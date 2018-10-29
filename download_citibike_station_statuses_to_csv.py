@@ -4,16 +4,10 @@ import json
 import csv
 
 
-# Get the data from citibikenyc and changes it into json 
+# Get the data from citibikenyc and change it into json 
 
 r = requests.get("https://feeds.citibikenyc.com/stations/stations.json")
 bikes = r.json()
-
-
-# Add timestamp to every station record 
-
-for station in bikes["stationBeanList"]:
-	station.update({"ExecutionTime":bikes["executionTime"]})
 
 
 def write_csv(path, fieldnames, data):
@@ -23,8 +17,9 @@ def write_csv(path, fieldnames, data):
 	with open(path, "w", newline = "") as csv_file:
 		writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 		writer.writeheader()
-		for row in data:
-			writer.writerow(row)
+		for station in data:
+			station.update({"ExecutionTime":bikes["executionTime"]})
+			writer.writerow(station)
 
 path = "citibikes_status.csv"
 data = bikes["stationBeanList"]
