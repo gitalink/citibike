@@ -1,4 +1,4 @@
-#!/anaconda3/bin/python
+#!/usr/bin/env python
 import requests 
 import json 
 
@@ -17,4 +17,4 @@ for station in stations_list:
 share_docks_w_bikes = total_bikes / total_docks * 100
 
 print("There are total of {} docks. There are {} available bikes.".format(total_docks, total_bikes))
-print("{:.2f}% of docks have bikes.".format(share_docks_w_bikes))
+print('%6.2f' % (share_docks_w_bikes) + "% of docks have bikes.")
