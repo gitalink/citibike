@@ -22,7 +22,7 @@ except Exception as err:
 try:
 	bikes = r.json()
 	logging.info("Converted json into dictionary")
-
+	
 except json.decoder.JSONDecodeError:
 	logging.info("Not able to convert json into dictionary. JSONDecodeError occurred")
 
@@ -38,6 +38,9 @@ def write_csv(fieldnames, data):
 		writer.writerow(station)
 try:
 	data = bikes["stationBeanList"]
+	number_of_keys = len(data[0].keys())
+	logging.info(f"Received number of key value pairs in bikes dictionary is {number_of_keys}; Expected:18")
+
 except NameError:
 	logging.info("Input dictionary is not defined")
 
