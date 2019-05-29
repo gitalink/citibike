@@ -44,7 +44,7 @@ with sqlite3.connect('citibike_db2') as sql:
   for row in reader:
     try:
       cur.execute("INSERT INTO citibikes_status VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
-      logging.info("Trying to insert row")
+      logging.info("Inserting row")
 
     except sqlite3.IntegrityError:
       logging.info("Ignored row. ExecutionTime and id unique index already exists")
