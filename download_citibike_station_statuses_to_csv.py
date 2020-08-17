@@ -13,10 +13,13 @@ logging.basicConfig(level=logging.DEBUG,format='%(asctime)s %(message)s')
 try: 
 	r = requests.get("https://feeds.citibikenyc.com/stations/stations.json")
 	r.raise_for_status()
-except HTTPError as http_err:
-	logging.info(f'Not able to download data. HTTP error occurred: {http_err}')  # Python 3.6
-except Exception as err:
-	logging.info(f'Other error occurred: {err}')  # Python 3.6
+except HTTPError: #as http_err: Python 3.6
+#	logging.info(f'Not able to download data. HTTP error occurred: {http_err}')  # Python 3.6
+	logging.info("Not able to download data")
+except Exception: # as err: #Python 3.6
+#	logging.info(f'Other error occurred: {err}')  # Python 3.6
+	logging.info("Other error occured")
+
 
 
 try:
@@ -39,7 +42,8 @@ def write_csv(fieldnames, data):
 try:
 	data = bikes["stationBeanList"]
 	number_of_keys = len(data[0].keys())
-	logging.info(f"Received number of key value pairs in bikes dictionary is {number_of_keys}; Expected:18")
+	logging.info("Expected number of keys: 18")
+#	logging.info(f"Received number of key value pairs in bikes dictionary is {number_of_keys}; Expected:18") # Python 3.6
 
 except NameError:
 	logging.info("Input dictionary is not defined")

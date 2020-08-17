@@ -5,7 +5,6 @@ import csv
 import sys
 import logging
 
-
 # configure logging 
 logging.basicConfig(level=logging.DEBUG,format='%(asctime)s %(message)s')
 
