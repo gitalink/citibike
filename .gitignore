@@ -1,0 +1,4 @@
+*.csv
+__pycache__/
+citibike_db2
+.DS_Store
